@@ -1,0 +1,1030 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>RecruitTech preview</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #0c0c0f;
+      }
+
+      body {
+        min-height: 100vh;
+        font-family: 'Space Grotesk', sans-serif;
+        color: #f5f5f5;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .page {
+        min-height: 100vh;
+        background: radial-gradient(circle at top, rgba(255, 91, 71, 0.2), transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(255, 196, 78, 0.18), transparent 45%),
+          radial-gradient(circle at 10% 80%, rgba(98, 255, 166, 0.12), transparent 40%),
+          #0c0c0f;
+      }
+
+      .container {
+        width: min(1200px, 92vw);
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        backdrop-filter: blur(24px);
+        background: rgba(12, 12, 15, 0.7);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 0;
+        gap: 24px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .logo-orb {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: conic-gradient(from 120deg, #ff4b4b, #ff8c42, #4d9de0, #7f5af0, #ff4b4b);
+        box-shadow: 0 0 18px rgba(255, 91, 71, 0.5);
+      }
+
+      .brand-name {
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      .brand-tag {
+        display: block;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .menu {
+        display: flex;
+        gap: 24px;
+      }
+
+      .menu a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+      }
+
+      .menu a:hover {
+        color: #ffe66d;
+      }
+
+      .actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .lang-toggle {
+        display: flex;
+        gap: 8px;
+        padding: 4px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      button {
+        border: none;
+        border-radius: 999px;
+        padding: 12px 20px;
+        font-weight: 600;
+        cursor: pointer;
+        font-family: inherit;
+        transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      }
+
+      button:hover {
+        transform: translateY(-2px) scale(1.01);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      button:active {
+        transform: translateY(1px) scale(0.99);
+      }
+
+      .primary {
+        background: linear-gradient(120deg, #ff4b4b, #ff8c42, #4d9de0, #7f5af0);
+        color: #0c0c0f;
+        box-shadow: 0 12px 30px rgba(255, 91, 71, 0.3);
+      }
+
+      .ghost {
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+      }
+
+      .ghost.active {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .outline {
+        background: transparent;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .hero {
+        padding: 120px 0 80px;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 48px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(36px, 5vw, 64px);
+        margin: 16px 0;
+      }
+
+      .lead {
+        font-size: 18px;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.75);
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 16px;
+        margin: 32px 0;
+        flex-wrap: wrap;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 16px;
+      }
+
+      .hero-stats h3 {
+        font-size: 24px;
+        margin-bottom: 4px;
+      }
+
+      .hero-card {
+        position: relative;
+        padding: 32px;
+        border-radius: 32px;
+        background: rgba(20, 20, 28, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        overflow: hidden;
+        animation: float 10s ease-in-out infinite;
+      }
+
+      .hero-card .glow {
+        position: absolute;
+        inset: -40% 20% auto auto;
+        width: 240px;
+        height: 240px;
+        background: radial-gradient(circle, rgba(127, 90, 240, 0.5), transparent 70%);
+      }
+
+      .card-top {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 24px;
+      }
+
+      .chip {
+        padding: 6px 12px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+        font-size: 12px;
+      }
+
+      .card-list {
+        display: grid;
+        gap: 16px;
+        margin-top: 24px;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        margin-bottom: 32px;
+      }
+
+      .clients .client-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 16px;
+      }
+
+      .client {
+        padding: 16px;
+        text-align: center;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.06);
+        color: rgba(255, 255, 255, 0.7);
+        transition: transform 0.25s ease, border-color 0.25s ease;
+      }
+
+      .client:hover {
+        transform: translateY(-4px);
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+
+      .team-grid,
+      .pricing-grid,
+      .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+      }
+
+      .position-card,
+      .team-grid article,
+      .case-card,
+      .testimonial-card,
+      .pricing-grid article,
+      .blog-grid article {
+        padding: 24px;
+        border-radius: 24px;
+        background: rgba(17, 17, 24, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .position-card:hover,
+      .team-grid article:hover,
+      .case-card:hover,
+      .testimonial-card:hover,
+      .pricing-grid article:hover,
+      .blog-grid article:hover {
+        transform: translateY(-6px);
+        border-color: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      }
+
+      .mission {
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .mission-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+        align-items: center;
+      }
+
+      .testimonials {
+        background: radial-gradient(circle at top right, rgba(77, 157, 224, 0.2), transparent 60%);
+      }
+
+      .pricing-grid .highlight {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: linear-gradient(160deg, rgba(255, 91, 71, 0.2), rgba(127, 90, 240, 0.25));
+      }
+
+      .pricing-grid ul {
+        padding-left: 18px;
+        color: rgba(255, 255, 255, 0.75);
+      }
+
+      .blog-grid article {
+        min-height: 180px;
+      }
+
+      .contact {
+        background: linear-gradient(120deg, rgba(88, 214, 141, 0.2), rgba(255, 182, 71, 0.2));
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 32px;
+        align-items: center;
+      }
+
+      .contact-card {
+        display: grid;
+        gap: 16px;
+        padding: 24px;
+        border-radius: 24px;
+        background: rgba(12, 12, 15, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .contact-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+      }
+
+      .contact-card label {
+        display: grid;
+        gap: 8px;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      input,
+      textarea {
+        padding: 12px 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        font-family: inherit;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      input:focus,
+      textarea:focus {
+        border-color: rgba(255, 255, 255, 0.5);
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.12);
+        outline: none;
+      }
+
+      .site-footer {
+        padding: 40px 0 60px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 16px;
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .marquee {
+        overflow: hidden;
+        width: 100%;
+        padding: 8px 0 24px;
+      }
+
+      .marquee-track {
+        display: flex;
+        gap: 20px;
+        width: max-content;
+        animation: marquee 28s linear infinite;
+      }
+
+      .marquee-track.slow {
+        animation-duration: 36s;
+      }
+
+      .marquee:hover .marquee-track {
+        animation-play-state: paused;
+      }
+
+      .marquee-card {
+        min-width: 260px;
+        flex: 0 0 auto;
+      }
+
+      .case-card span,
+      .testimonial-card span {
+        display: block;
+        margin-top: 12px;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 14px;
+      }
+
+      @keyframes marquee {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .nav {
+          flex-wrap: wrap;
+        }
+        .menu {
+          order: 3;
+          width: 100%;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+        .actions {
+          width: 100%;
+          justify-content: space-between;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .menu {
+          display: none;
+        }
+        .nav {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .actions {
+          width: 100%;
+          justify-content: space-between;
+        }
+        .hero {
+          padding-top: 80px;
+        }
+        .hero-actions {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .hero-actions button {
+          width: 100%;
+        }
+        .hero-stats {
+          grid-template-columns: 1fr;
+        }
+        .marquee-card {
+          min-width: 220px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .container {
+          width: min(1200px, 88vw);
+        }
+        .brand {
+          gap: 12px;
+        }
+        .logo-orb {
+          width: 36px;
+          height: 36px;
+        }
+        .brand-name {
+          font-size: 18px;
+        }
+        .brand-tag {
+          font-size: 10px;
+        }
+        .hero {
+          padding: 64px 0 56px;
+        }
+        section {
+          padding: 64px 0;
+        }
+        .contact-grid {
+          gap: 20px;
+        }
+        .marquee-track {
+          gap: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="site-header">
+        <div class="container nav">
+          <div class="brand">
+            <span class="logo-orb"></span>
+            <div>
+              <span class="brand-name">RecruitTech</span>
+              <span class="brand-tag">Talent agency for 2026-ready teams</span>
+            </div>
+          </div>
+          <nav class="menu">
+            <a href="#clients">Клиенты</a>
+            <a href="#about">О нас</a>
+            <a href="#cases">Кейсы</a>
+            <a href="#blog">Блог</a>
+          </nav>
+          <div class="actions">
+            <div class="lang-toggle">
+              <button class="ghost active">RU</button>
+              <button class="ghost">EN</button>
+            </div>
+            <button class="primary">Подобрать специалиста</button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero" id="about">
+          <div class="container hero-grid">
+            <div class="hero-copy">
+              <p class="eyebrow">RecruitTech — кадровое агентство нового поколения</p>
+              <h1>Собираем команды, которые неизбежно побеждают.</h1>
+              <p class="lead">
+                Полный цикл подбора для product, engineering и leadership ролей. Мы объединяем человеческую интуицию и
+                data-driven поиск, чтобы вы нанимали быстрее и точнее.
+              </p>
+              <div class="hero-actions">
+                <button class="primary">Подобрать специалиста</button>
+                <button class="outline">Отправить резюме</button>
+              </div>
+              <div class="hero-stats">
+                <div>
+                  <h3>12 дней</h3>
+                  <p>среднее время до short-list</p>
+                </div>
+                <div>
+                  <h3>80%+</h3>
+                  <p>принятие оффера</p>
+                </div>
+                <div>
+                  <h3>400+</h3>
+                  <p>закрытых позиций</p>
+                </div>
+              </div>
+            </div>
+            <div class="hero-card">
+              <div class="glow"></div>
+              <div class="card-top">
+                <span class="chip">Live search</span>
+                <span class="chip">AI mapping</span>
+                <span class="chip">Human vetting</span>
+              </div>
+              <h2>Talent radar 360°</h2>
+              <p>
+                Ежедневный скрининг рынка, готовые пайплайны и калибровка soft skills под каждую роль. Вы видите только
+                проверенные совпадения — без «может быть».
+              </p>
+              <div class="card-list">
+                <div>
+                  <h4>Signal mix</h4>
+                  <p>Данные о результативности, портфолио и культурный fit.</p>
+                </div>
+                <div>
+                  <h4>Experience design</h4>
+                  <p>Кандидатский путь как премиальный продукт.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="clients" id="clients">
+          <div class="container">
+            <div class="section-title">
+              <span class="eyebrow">Нам доверяют</span>
+              <h2>Команды, которые выбирают RecruitTech</h2>
+            </div>
+            <div class="client-grid">
+              <div class="client">NovaBank</div>
+              <div class="client">WaveTech</div>
+              <div class="client">Orbit Labs</div>
+              <div class="client">Helix AI</div>
+              <div class="client">Zenith Cloud</div>
+              <div class="client">Pulse Health</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="positions">
+          <div class="container">
+            <div class="section-title">
+              <span class="eyebrow">Сильные направления</span>
+              <h2>Сферы, где мы закрываем ключевые роли</h2>
+            </div>
+          </div>
+          <div class="marquee">
+            <div class="marquee-track">
+              <div class="position-card marquee-card">
+                <h3>Fintech</h3>
+                <p>Digital banking, платежные платформы, риск-аналитика.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>HealthTech</h3>
+                <p>Digital health, клинические продукты, R&D команды.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>SaaS & B2B</h3>
+                <p>Enterprise платформы, revops и customer success.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>AI & Data</h3>
+                <p>ML-инженеры, data scientists, AI product.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>Cybersecurity</h3>
+                <p>Security architects, SOC, cloud security.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>E-commerce</h3>
+                <p>Marketplace лиды, growth, performance.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>PropTech</h3>
+                <p>Smart real estate, digital construction.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>Logistics</h3>
+                <p>Supply chain, last-mile, ops leadership.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>Gaming</h3>
+                <p>Game design, live ops, monetization.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>EdTech</h3>
+                <p>Learning platforms, instructional design.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>HRTech</h3>
+                <p>People analytics, ATS, workforce planning.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>Energy</h3>
+                <p>GreenTech, renewables, grid innovation.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>Media</h3>
+                <p>Streaming, content ops, creative leadership.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>Biotech</h3>
+                <p>Bioinformatics, лабораторные продукты.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>Web3</h3>
+                <p>Blockchain, tokenomics, compliance.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>Fintech</h3>
+                <p>Digital banking, платежные платформы, риск-аналитика.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>HealthTech</h3>
+                <p>Digital health, клинические продукты, R&D команды.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>SaaS & B2B</h3>
+                <p>Enterprise платформы, revops и customer success.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>AI & Data</h3>
+                <p>ML-инженеры, data scientists, AI product.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>Cybersecurity</h3>
+                <p>Security architects, SOC, cloud security.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>E-commerce</h3>
+                <p>Marketplace лиды, growth, performance.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>PropTech</h3>
+                <p>Smart real estate, digital construction.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>Logistics</h3>
+                <p>Supply chain, last-mile, ops leadership.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>Gaming</h3>
+                <p>Game design, live ops, monetization.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>EdTech</h3>
+                <p>Learning platforms, instructional design.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>HRTech</h3>
+                <p>People analytics, ATS, workforce planning.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>Energy</h3>
+                <p>GreenTech, renewables, grid innovation.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>Media</h3>
+                <p>Streaming, content ops, creative leadership.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>Biotech</h3>
+                <p>Bioinformatics, лабораторные продукты.</p>
+              </div>
+              <div class="position-card marquee-card">
+                <h3>Web3</h3>
+                <p>Blockchain, tokenomics, compliance.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="team">
+          <div class="container">
+            <div class="section-title">
+              <span class="eyebrow">Наша команда</span>
+              <h2>Люди, которые создают hiring-эффект</h2>
+            </div>
+            <div class="team-grid">
+              <article>
+                <h4>Mila K.</h4>
+                <p>Managing Partner · Executive Search</p>
+              </article>
+              <article>
+                <h4>Artem V.</h4>
+                <p>Head of Engineering Recruitment</p>
+              </article>
+              <article>
+                <h4>Nora P.</h4>
+                <p>Global Talent Partner</p>
+              </article>
+              <article>
+                <h4>Jin S.</h4>
+                <p>Data & Insights Lead</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="mission">
+          <div class="container mission-grid">
+            <div>
+              <span class="eyebrow">Миссия</span>
+              <h2>Делаем найм движком роста.</h2>
+            </div>
+            <p>
+              RecruitTech соединяет амбициозные компании с людьми, которые создают импульс. Наша цель — строить
+              устойчивые команды, способные масштабироваться глобально, не теряя культуру.
+            </p>
+          </div>
+        </section>
+
+        <section class="cases" id="cases">
+          <div class="container">
+            <div class="section-title">
+              <span class="eyebrow">Кейсы</span>
+              <h2>Результаты, которые можно измерить</h2>
+            </div>
+          </div>
+          <div class="marquee">
+            <div class="marquee-track">
+              <article class="case-card marquee-card">
+                <h3>Fintech scale-up</h3>
+                <p>Собрали product и data-команду из 18 человек за 10 недель в 3 странах.</p>
+                <span>Time-to-hire ↓ 42%</span>
+              </article>
+              <article class="case-card marquee-card">
+                <h3>HealthTech launch</h3>
+                <p>Закрыли executive роли до Series B и усилили employer brand.</p>
+                <span>Offer acceptance ↑ 18%</span>
+              </article>
+              <article class="case-card marquee-card">
+                <h3>SaaS enterprise</h3>
+                <p>Перестроили engineering org через staff-уровень и новое лидерство.</p>
+                <span>Retention ↑ 30%</span>
+              </article>
+              <article class="case-card marquee-card">
+                <h3>AI studio</h3>
+                <p>Собрали core ML-команду и Research Ops за 6 недель.</p>
+                <span>Pipeline readiness ↑ 55%</span>
+              </article>
+              <article class="case-card marquee-card">
+                <h3>Marketplace</h3>
+                <p>Закрыли коммерческий блок и head of growth до запуска.</p>
+                <span>Revenue impact ↑ 24%</span>
+              </article>
+              <article class="case-card marquee-card">
+                <h3>Logistics scale</h3>
+                <p>Найм operations-лидеров в 4 хабах.</p>
+                <span>Ops efficiency ↑ 19%</span>
+              </article>
+              <article class="case-card marquee-card">
+                <h3>Fintech scale-up</h3>
+                <p>Собрали product и data-команду из 18 человек за 10 недель в 3 странах.</p>
+                <span>Time-to-hire ↓ 42%</span>
+              </article>
+              <article class="case-card marquee-card">
+                <h3>HealthTech launch</h3>
+                <p>Закрыли executive роли до Series B и усилили employer brand.</p>
+                <span>Offer acceptance ↑ 18%</span>
+              </article>
+              <article class="case-card marquee-card">
+                <h3>SaaS enterprise</h3>
+                <p>Перестроили engineering org через staff-уровень и новое лидерство.</p>
+                <span>Retention ↑ 30%</span>
+              </article>
+              <article class="case-card marquee-card">
+                <h3>AI studio</h3>
+                <p>Собрали core ML-команду и Research Ops за 6 недель.</p>
+                <span>Pipeline readiness ↑ 55%</span>
+              </article>
+              <article class="case-card marquee-card">
+                <h3>Marketplace</h3>
+                <p>Закрыли коммерческий блок и head of growth до запуска.</p>
+                <span>Revenue impact ↑ 24%</span>
+              </article>
+              <article class="case-card marquee-card">
+                <h3>Logistics scale</h3>
+                <p>Найм operations-лидеров в 4 хабах.</p>
+                <span>Ops efficiency ↑ 19%</span>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="testimonials">
+          <div class="container">
+            <div class="section-title">
+              <span class="eyebrow">Отзывы</span>
+              <h2>Что говорят фаундеры</h2>
+            </div>
+          </div>
+          <div class="marquee">
+            <div class="marquee-track slow">
+              <article class="testimonial-card marquee-card">
+                <p>«RecruitTech превратил найм в запуск продукта. Мы доверяли каждому hire.»</p>
+                <span>CEO, Orbit Labs</span>
+              </article>
+              <article class="testimonial-card marquee-card">
+                <p>«Скорость без потери культуры. Мы закрыли roadmap без выгорания.»</p>
+                <span>COO, WaveTech</span>
+              </article>
+              <article class="testimonial-card marquee-card">
+                <p>«Самый сильный пайплайн. Кандидаты приходили уже готовыми.»</p>
+                <span>HR Lead, NovaBank</span>
+              </article>
+              <article class="testimonial-card marquee-card">
+                <p>«Сделали executive search тихо и без шума, но с точным попаданием.»</p>
+                <span>Founder, Helix AI</span>
+              </article>
+              <article class="testimonial-card marquee-card">
+                <p>«Они собирают команды, которые масштабируются и не ломаются.»</p>
+                <span>VP People, Zenith Cloud</span>
+              </article>
+              <article class="testimonial-card marquee-card">
+                <p>«RecruitTech превратил найм в запуск продукта. Мы доверяли каждому hire.»</p>
+                <span>CEO, Orbit Labs</span>
+              </article>
+              <article class="testimonial-card marquee-card">
+                <p>«Скорость без потери культуры. Мы закрыли roadmap без выгорания.»</p>
+                <span>COO, WaveTech</span>
+              </article>
+              <article class="testimonial-card marquee-card">
+                <p>«Самый сильный пайплайн. Кандидаты приходили уже готовыми.»</p>
+                <span>HR Lead, NovaBank</span>
+              </article>
+              <article class="testimonial-card marquee-card">
+                <p>«Сделали executive search тихо и без шума, но с точным попаданием.»</p>
+                <span>Founder, Helix AI</span>
+              </article>
+              <article class="testimonial-card marquee-card">
+                <p>«Они собирают команды, которые масштабируются и не ломаются.»</p>
+                <span>VP People, Zenith Cloud</span>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="pricing">
+          <div class="container">
+            <div class="section-title">
+              <span class="eyebrow">Тарифы</span>
+              <h2>Гибкие модели сотрудничества</h2>
+            </div>
+            <div class="pricing-grid">
+              <article>
+                <h3>Growth</h3>
+                <p>Для команд, которые растут резко.</p>
+                <h4>18% от годового дохода</h4>
+                <ul>
+                  <li>Выделенная команда рекрутеров</li>
+                  <li>Еженедельные hiring-спринты</li>
+                  <li>Усиление бренда работодателя</li>
+                </ul>
+              </article>
+              <article class="highlight">
+                <h3>Executive</h3>
+                <p>Лидерские и конфиденциальные поиски.</p>
+                <h4>Fixed + success fee</h4>
+                <ul>
+                  <li>Глобальный talent mapping</li>
+                  <li>Board-level advisory</li>
+                  <li>Candidate concierge</li>
+                </ul>
+              </article>
+              <article>
+                <h3>Embedded</h3>
+                <p>RecruitTech внутри вашей команды.</p>
+                <h4>Ежемесячный retainer</h4>
+                <ul>
+                  <li>Редизайн hiring-процесса</li>
+                  <li>Analytics dashboard</li>
+                  <li>Обучение hiring-менеджеров</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="blog" id="blog">
+          <div class="container">
+            <div class="section-title">
+              <span class="eyebrow">Инсайты</span>
+              <h2>RecruitTech journal</h2>
+            </div>
+            <div class="blog-grid">
+              <article>
+                <h3>Hiring playbook 2026</h3>
+                <p>Как AI, доверие и скорость меняют рекрутинг.</p>
+              </article>
+              <article>
+                <h3>Опыт кандидата</h3>
+                <p>Touchpoints, которые заставляют сказать «да».</p>
+              </article>
+              <article>
+                <h3>Глобальный найм</h3>
+                <p>Кросс-культурные практики для senior ролей.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="contact">
+          <div class="container contact-grid">
+            <div>
+              <span class="eyebrow">На связи</span>
+              <h2>Готовы собрать команду мечты?</h2>
+              <p>Расскажите о целях найма — мы ответим в течение 24 часов.</p>
+            </div>
+            <form class="contact-card">
+              <label>
+                Компания
+                <input type="text" placeholder="RecruitTech" />
+              </label>
+              <label>
+                Email
+                <input type="email" placeholder="hello@recruittech.com" />
+              </label>
+              <label>
+                Какие роли вы ищете?
+                <textarea rows="3" placeholder="Product, Engineering, Leadership"></textarea>
+              </label>
+              <button class="primary" type="submit">Отправить запрос</button>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-grid">
+          <div>
+            <h3>RecruitTech</h3>
+            <p>High-impact recruitment для амбициозных компаний.</p>
+          </div>
+          <div>
+            <p>hello@recruittech.com</p>
+            <p>+49 555 120 2040</p>
+          </div>
+          <div>
+            <p>Berlin · Dubai · São Paulo</p>
+            <p>© 2026 RecruitTech</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

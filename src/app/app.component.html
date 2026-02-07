@@ -1,0 +1,227 @@
+<div class="page">
+  <header class="site-header">
+    <div class="container nav">
+      <div class="brand">
+        <span class="logo-orb"></span>
+        <div>
+          <span class="brand-name">RecruitTech</span>
+          <span class="brand-tag">Talent agency for 2026-ready teams</span>
+        </div>
+      </div>
+      <nav class="menu">
+        <a href="#clients">{{ t.nav.clients }}</a>
+        <a href="#about">{{ t.nav.about }}</a>
+        <a href="#cases">{{ t.nav.cases }}</a>
+        <a href="#blog">{{ t.nav.blog }}</a>
+      </nav>
+      <div class="actions">
+        <div class="lang-toggle">
+          <button class="ghost" [class.active]="lang === 'ru'" (click)="setLang('ru')">RU</button>
+          <button class="ghost" [class.active]="lang === 'en'" (click)="setLang('en')">EN</button>
+        </div>
+        <button class="primary">{{ t.buttons.find }}</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="about">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">{{ t.hero.eyebrow }}</p>
+          <h1>{{ t.hero.title }}</h1>
+          <p class="lead">{{ t.hero.lead }}</p>
+          <div class="hero-actions">
+            <button class="primary">{{ t.hero.actions.request }}</button>
+            <button class="outline">{{ t.hero.actions.resume }}</button>
+          </div>
+          <div class="hero-stats">
+            <div *ngFor="let stat of t.hero.stats">
+              <h3>{{ stat.value }}</h3>
+              <p>{{ stat.label }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="glow"></div>
+          <div class="card-top">
+            <span class="chip" *ngFor="let chip of t.heroCard.chips">{{ chip }}</span>
+          </div>
+          <h2>{{ t.heroCard.title }}</h2>
+          <p>{{ t.heroCard.body }}</p>
+          <div class="card-list">
+            <div *ngFor="let point of t.heroCard.points">
+              <h4>{{ point.title }}</h4>
+              <p>{{ point.body }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="clients" id="clients">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">{{ t.clients.eyebrow }}</span>
+          <h2>{{ t.clients.title }}</h2>
+        </div>
+        <div class="client-grid">
+          <div class="client" *ngFor="let client of t.clients.list">{{ client }}</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="positions">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">{{ t.positions.eyebrow }}</span>
+          <h2>{{ t.positions.title }}</h2>
+        </div>
+      </div>
+      <div class="marquee">
+        <div class="marquee-track">
+          <div class="position-card marquee-card" *ngFor="let position of roleMarquee">
+            <h3>{{ position.title }}</h3>
+            <p>{{ position.body }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="team">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">{{ t.team.eyebrow }}</span>
+          <h2>{{ t.team.title }}</h2>
+        </div>
+        <div class="team-grid">
+          <article *ngFor="let member of t.team.list">
+            <h4>{{ member.name }}</h4>
+            <p>{{ member.role }}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="mission">
+      <div class="container mission-grid">
+        <div>
+          <span class="eyebrow">{{ t.mission.eyebrow }}</span>
+          <h2>{{ t.mission.title }}</h2>
+        </div>
+        <p>{{ t.mission.body }}</p>
+      </div>
+    </section>
+
+    <section class="cases" id="cases">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">{{ t.cases.eyebrow }}</span>
+          <h2>{{ t.cases.title }}</h2>
+        </div>
+      </div>
+      <div class="marquee">
+        <div class="marquee-track">
+          <article class="case-card marquee-card" *ngFor="let item of caseMarquee">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.body }}</p>
+            <span>{{ item.metric }}</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">{{ t.testimonials.eyebrow }}</span>
+          <h2>{{ t.testimonials.title }}</h2>
+        </div>
+      </div>
+      <div class="marquee">
+        <div class="marquee-track slow">
+          <article class="testimonial-card marquee-card" *ngFor="let item of testimonialMarquee">
+            <p>{{ item.quote }}</p>
+            <span>{{ item.author }}</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">{{ t.pricing.eyebrow }}</span>
+          <h2>{{ t.pricing.title }}</h2>
+        </div>
+        <div class="pricing-grid">
+          <article *ngFor="let plan of t.pricing.plans" [class.highlight]="plan.highlight">
+            <h3>{{ plan.name }}</h3>
+            <p>{{ plan.summary }}</p>
+            <h4>{{ plan.price }}</h4>
+            <ul>
+              <li *ngFor="let item of plan.items">{{ item }}</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog" id="blog">
+      <div class="container">
+        <div class="section-title">
+          <span class="eyebrow">{{ t.blog.eyebrow }}</span>
+          <h2>{{ t.blog.title }}</h2>
+        </div>
+        <div class="blog-grid">
+          <article *ngFor="let item of t.blog.list">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.body }}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="container contact-grid">
+        <div>
+          <span class="eyebrow">{{ t.contact.eyebrow }}</span>
+          <h2>{{ t.contact.title }}</h2>
+          <p>{{ t.contact.body }}</p>
+        </div>
+        <form class="contact-card">
+          <label>
+            {{ t.contact.form.company }}
+            <input type="text" [placeholder]="t.contact.form.companyPlaceholder" />
+          </label>
+          <label>
+            {{ t.contact.form.email }}
+            <input type="email" [placeholder]="t.contact.form.emailPlaceholder" />
+          </label>
+          <label>
+            {{ t.contact.form.roles }}
+            <textarea rows="3" [placeholder]="t.contact.form.rolesPlaceholder"></textarea>
+          </label>
+          <button class="primary" type="submit">{{ t.contact.form.submit }}</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>RecruitTech</h3>
+        <p>{{ t.footer.about }}</p>
+      </div>
+      <div>
+        <p>{{ t.footer.email }}</p>
+        <p>{{ t.footer.phone }}</p>
+      </div>
+      <div>
+        <p>{{ t.footer.locations }}</p>
+        <p>{{ t.footer.copyright }}</p>
+      </div>
+    </div>
+  </footer>
+</div>
